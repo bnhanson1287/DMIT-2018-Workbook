@@ -1,0 +1,9 @@
+Reverse Engineer a DB
+create folder named Entities
+ - add item ADO.NET Data Model
+ - Code first from DB
+ - create new connection
+change namespace from .Entities to .DAL
+add using .Entities
+Add DAL folder
+Move context to DAL folder
