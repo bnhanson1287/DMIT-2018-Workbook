@@ -1,16 +1,23 @@
 ﻿<%@ Page Title="View Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewProducts.aspx.cs" Inherits="WebAppCRUD.Admin.ViewProducts" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>View Products</h1>
-    <asp:GridView ID="ProductGridView" runat="server" CssClass="table table-cover" AutoGenerateColumns="False" DataSourceID="ProductsDataSource">
+    <asp:GridView ID="ProductGridView" runat="server" CssClass="table table-cover" AutoGenerateColumns="False" DataSourceID="ProductsDataSource" ItemType="WestWindSystem.Entities.Product">
         <Columns>
             <asp:BoundField DataField="ProductID" HeaderText="Product ID" SortExpression="ProductID"></asp:BoundField>
             <asp:BoundField DataField="ProductName" HeaderText="Product Name" SortExpression="ProductName"></asp:BoundField>
-            <asp:TemplateField>
+            <asp:TemplateField HeaderText="Supplier">
                 <ItemTemplate>
-                    <asp:DropDownList ID="SupplierDropDown" runat="server" DataSourceID="SupplierDataSource" DataTextField="CompanyName" DataValueField="SupplierID"></asp:DropDownList>
+                    <asp:DropDownList ID="SupplierDropDown" runat="server" DataSourceID="SupplierDataSource" SelectedValue="<%# Item.SupplierID %>" DataTextField="CompanyName" DataValueField="SupplierID"
+                        enabled="false"></asp:DropDownList>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="CategoryID" HeaderText="Category ID" SortExpression="CategoryID"></asp:BoundField>
+            <asp:TemplateField HeaderText="Category">
+                <ItemTemplate>
+                    <asp:DropDownList ID="CategoryDropDown" runat="server"
+                        Enabled="false" DataSourceID="CategoryDataSource" SelectedValue="<%# Item.CategoryID %>" DataTextField="CategoryName" DataValueField="CategoryID">
+                    </asp:DropDownList>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="QuantityPerUnit" HeaderText="Qty Per Unit" SortExpression="QuantityPerUnit"></asp:BoundField>
             <asp:BoundField DataField="MinimumOrderQuantity" HeaderText="Min Order Qty" SortExpression="MinimumOrderQuantity"></asp:BoundField>
             <asp:BoundField DataField="UnitPrice" HeaderText="Unit $" SortExpression="UnitPrice"></asp:BoundField>
