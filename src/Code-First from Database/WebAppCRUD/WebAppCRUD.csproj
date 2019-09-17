@@ -111,6 +111,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Admin\ViewProducts.aspx" />
+    <Content Include="Admin\ViewSuppliers.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -171,6 +172,13 @@
     </Compile>
     <Compile Include="Admin\ViewProducts.aspx.designer.cs">
       <DependentUpon>ViewProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ViewSuppliers.aspx.cs">
+      <DependentUpon>ViewSuppliers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ViewSuppliers.aspx.designer.cs">
+      <DependentUpon>ViewSuppliers.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
