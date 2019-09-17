@@ -7,3 +7,8 @@ change namespace from .Entities to .DAL
 add using .Entities
 Add DAL folder
 Move context to DAL folder
+
+-----------------------------------
+GridView - R,U,D
+ListView - C,R,U,D
+Repeater - R
