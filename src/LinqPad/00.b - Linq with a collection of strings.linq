@@ -1,5 +1,7 @@
 <Query Kind="Program" />
 
+//TODO look up yield meaning
+//TODO learn more about an extension method ie .Dump
 void Main()
 {
     Instructors.Dump();

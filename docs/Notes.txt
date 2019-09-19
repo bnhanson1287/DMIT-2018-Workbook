@@ -12,3 +12,34 @@ Move context to DAL folder
 GridView - R,U,D
 ListView - C,R,U,D
 Repeater - R
+
+-----------------------------------
+Linqpad
+make connection to db
+Add connection -> Default linq to SQL -> '.' for server -> specify new or exsisting db -> select desired db -> OK
+New Query -> select requisite connection.
+**toggle Results screen on/off w/ Ctrl+r
+Linq sample syntax = from item in Categories select item.CategoryName
+
+----------------------------------
+[] Transform Data
+	|
+	------> Reading/Querying
+	|	|
+	|	---> Linq 
+	|	| +
+	|	---> classes whose "shape" matches our UI needs (Display)
+	|
+	------> Issuing Commands
+	|
+	---> Business Oriented Commands
+	|
+	--->Process as transactions
+[] Present Data in UI
+[] Process Data in UI (send to BLL)
+[] Security
+
+------------------------------
+
+IEnumerable <> = Is an Interface. Kind of like a list. 
+Dump is an extension method.
