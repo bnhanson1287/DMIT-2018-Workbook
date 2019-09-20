@@ -43,3 +43,14 @@ Linq sample syntax = from item in Categories select item.CategoryName
 
 IEnumerable <> = Is an Interface. Kind of like a list. 
 Dump is an extension method.
+-----------------------------
+Delete obj and bin then rebuild for roslyn.exe error
+-----------------------------
+
+ObjectContext instance has been disposed error message (Lazy Loading Issue) - BLL, Controller "return context.Class.Include("Class").ToList();" --- bad way 'magic string' --
+"return context.Class.Include(nameof(Supplier.Address)).ToList();" --- BEST PRACTICES
+
+Press no when dialogue box asks if I want to reconfigure ListView when adding Insert to ObjectDataSource.
+
+
+ 
