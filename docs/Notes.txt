@@ -52,5 +52,19 @@ ObjectContext instance has been disposed error message (Lazy Loading Issue) - BL
 
 Press no when dialogue box asks if I want to reconfigure ListView when adding Insert to ObjectDataSource.
 
+---------------------------
+
+lightning bolt in intellisense is an event. has past tense and present tense to let us choose to do something at a specific time
+
+---------------------------
+$"string" = string interpolation: allows me to not have to add a variable value to a string without concatenation or placeholder.
+
+---------------------------
+Nuget FreeCode.WebApp
+
+drag user control onto page
+
+---------------------------
+add DataKeyNames to ListView or GridView to support an Update/Delete. Keeps the primarykey.
 
  
