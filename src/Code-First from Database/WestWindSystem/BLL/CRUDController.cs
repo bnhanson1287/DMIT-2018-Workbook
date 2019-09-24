@@ -43,6 +43,7 @@ namespace WestWindSystem.BLL
                 context.SaveChanges();
             }
         }
+
         #endregion
         #region Categories CRUD
         [DataObjectMethod(DataObjectMethodType.Select)]
