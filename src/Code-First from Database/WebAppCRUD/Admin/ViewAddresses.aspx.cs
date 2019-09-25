@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebAppCRUD
+namespace WebAppCRUD.Admin
 {
     public partial class ViewAddresses : System.Web.UI.Page
     {
