@@ -118,5 +118,18 @@ namespace WestWindSystem.BLL
         }
 
         #endregion
+
+        #region Regions CRUD
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<Region> ListRegions()
+        {
+            using (var context = new WestWindContext())
+            {
+                return context.Regions.ToList();
+            }
+        }
+
+        #endregion
+
     }
 }

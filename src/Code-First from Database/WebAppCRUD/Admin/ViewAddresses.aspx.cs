@@ -13,5 +13,9 @@ namespace WebAppCRUD
         {
 
         }
+        protected void CheckForExceptions(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            MessageUserControl.HandleDataBoundException(e);
+        }
     }
 }
