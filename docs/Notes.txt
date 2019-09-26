@@ -73,7 +73,7 @@ add DataKeyNames to ListView or GridView to support an Update/Delete. Keeps the 
 in order to do a Linq Query, must have a query collection "from person in Room"
 
 ------------------------
-Tools -> NugetPackages Manage -> Package manager console -> Click to restore from your online package sources
+Tools -> NuGet Package Manager -> Package manager console -> Click to restore from your online package sources
 or
 PM> update-package -r
 
