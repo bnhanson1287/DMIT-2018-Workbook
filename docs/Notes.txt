@@ -42,6 +42,7 @@ Linq sample syntax = from item in Categories select item.CategoryName
 ------------------------------
 
 IEnumerable <> = Is an Interface. Kind of like a list. 
+Interface = a "contract" regarding methods & properties.
 Dump is an extension method.
 -----------------------------
 Delete obj and bin then rebuild for roslyn.exe error
@@ -66,5 +67,16 @@ drag user control onto page
 
 ---------------------------
 add DataKeyNames to ListView or GridView to support an Update/Delete. Keeps the primarykey.
+
+--------------------------
+
+in order to do a Linq Query, must have a query collection "from person in Room"
+
+------------------------
+Tools -> NugetPackages Manage -> Package manager console -> Click to restore from your online package sources
+or
+PM> update-package -r
+
+
 
  

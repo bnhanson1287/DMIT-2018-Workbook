@@ -1,9 +1,18 @@
-<Query Kind="Expression" />
+<Query Kind="Expression">
+  <Connection>
+    <ID>6edf624f-c0cc-49a2-a8cb-62de5ccf03e1</ID>
+    <Persist>true</Persist>
+    <Server>.</Server>
+    <Database>WestWind</Database>
+  </Connection>
+</Query>
 
 // Practice questions - do each one in a separate LinqPad query.
 /*
 
 A) List all the customer company names for those with more than 5 orders.
+
+
 B) Get a list of all the region names
 C) Get a list of all the territory names
 D) List all the regions and the number of territories in each region
@@ -15,3 +24,8 @@ H) List all the discontinued products, specifying the product name and unit pric
 I) List the company names of all Suppliers in North America (Canada, USA, Mexico)
 
 */
+
+// A)
+from company in Customers
+where company.Orders.Count > 5
+select company.CompanyName  
