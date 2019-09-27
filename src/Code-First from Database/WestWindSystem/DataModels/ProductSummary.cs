@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WestWindSystem.Entities;
 
 namespace WestWindSystem.DataModels
 {
     public class ProductSummary
     {
         public string ProductName { get; set; }
-        public double UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
 
-        public int QuantityPerUnit { get; set; }
+        public string QuantityPerUnit { get; set; }
 
-        public IEnumerable<>
+        public string Category { get; set; }
     }
 }

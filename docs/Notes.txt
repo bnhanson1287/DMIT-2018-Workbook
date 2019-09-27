@@ -46,6 +46,9 @@ Interface = a "contract" regarding methods & properties.
 Dump is an extension method.
 -----------------------------
 Delete obj and bin then rebuild for roslyn.exe error
+Tools -> NuGet Package Manager -> Package manager console -> Click to restore from your online package sources
+or
+PM> update-package -r
 -----------------------------
 
 ObjectContext instance has been disposed error message (Lazy Loading Issue) - BLL, Controller "return context.Class.Include("Class").ToList();" --- bad way 'magic string' --
@@ -73,9 +76,10 @@ add DataKeyNames to ListView or GridView to support an Update/Delete. Keeps the 
 in order to do a Linq Query, must have a query collection "from person in Room"
 
 ------------------------
-Tools -> NuGet Package Manager -> Package manager console -> Click to restore from your online package sources
-or
-PM> update-package -r
+
+
+-----------------------
+Lamda operator => (variables => expression that reflects whats going on inside an anonymus method) EX) (row => row.CategoryName)
 
 
 

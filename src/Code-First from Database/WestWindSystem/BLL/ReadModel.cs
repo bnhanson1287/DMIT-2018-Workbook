@@ -15,28 +15,28 @@ namespace WestWindSystem.BLL
     {
         #region Query Supplier Summary
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<Supplier> ListSuppliers ()
-        {
+        public List<SupplierSummary> ListSuppliers()
+        {   
             using (var context = new WestWindContext())
             {
-                var result = from data in Suppliers
-                    select new Suppliers
-                    {
-                        CompanyName = data.CompanyName,
-                        PhoneNumber = data.Phone,
-                        Products = from item in data.Products
-                                select new //ProductSummary
-                                {
-                                    ProductName = item.ProductName,
-                                    UnitPrice = item.UnitPrice,
-                                    QuantityPerUnit = item.QuantityPerUnit,
-                                    Category = from cat in Categories
-                                                where cat.CategoryID == item.CategoryID
-                                                select cat.CategoryName
+            var result = from data in context.Suppliers
+                            select new SupplierSummary
+                            {
+                                CompanyName = data.CompanyName,
+                                Phone = data.Phone,
+                                Products = from item in data.Products
+                                        select new ProductSummary
+                                        {
+                                            ProductName = item.ProductName,
+                                            UnitPrice = item.UnitPrice,
+                                            QuantityPerUnit = item.QuantityPerUnit,
+                                            Category = item.Category.CategoryName
 
-                                }
-                    }
+                                        }
+                            };
+                return result.ToList();
             }
+            
         }
         #endregion
     }

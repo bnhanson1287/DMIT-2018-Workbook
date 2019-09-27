@@ -1,7 +1,6 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>05a2444e-14ea-4451-ad3d-3398e9ff7898</ID>
-    <Persist>true</Persist>
+    <ID>6edf624f-c0cc-49a2-a8cb-62de5ccf03e1</ID>
     <Server>.</Server>
     <Database>WestWind</Database>
   </Connection>
@@ -10,6 +9,7 @@
 // List all the customers grouped by country and region.
 from row in Customers
 group row by new { row.Address.Country, row.Address.Region } into CustomerGroups
+//				  \      key is an anonymus type          /
 select new
 {
    Key = CustomerGroups.Key,
