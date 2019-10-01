@@ -56,6 +56,7 @@
                         <li><a runat="server" href="~/Admin/ViewCategories.aspx">View Categories</a></li>
                         <li><a runat="server" href="~/Admin/ViewSuppliers.aspx">View Suppliers</a></li>
                         <li><a runat="server" href="~/Admin/ViewProducts.aspx">View Products</a></li>
+                        <li><a runat="server" href="~/Admin/OurSuppliers.aspx">Our Suppliers</a></li>
                     </ul>
                 </div>
             </div>
