@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WestWindSystem.Entities;
 
-namespace WestWindSystem.DataModels
+namespace WestWindSystem.ReadModels
 {
     public class ProductSummary
     {

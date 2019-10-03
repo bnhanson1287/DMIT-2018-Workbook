@@ -3,12 +3,13 @@
     <h1>Our Suppliers</h1>
     <div class="row">
         <div class="col-md-12">
-            <asp:Repeater ID="SupplierRepeater" runat="server" DataSourceID="SupplierSummaryDataSource" ItemType="WestWindSystem.DataModels.SupplierSummary">
+            <asp:Repeater ID="SupplierRepeater" runat="server" DataSourceID="SupplierSummaryDataSource" ItemType="WestWindSystem.ReadModels.SupplierSummary">
                 <ItemTemplate>
                     <h3><%# Item.CompanyName %></h3>
+                    <p><%# Item.ContactName %></p>
                     <i><p><%# Item.Phone %></p></i>
                     <blockquote>
-                        <asp:Repeater ID="ProductRepeater" runat="server" DataSource="<%# Item.Products %>" ItemType="WestWindSystem.DataModels.ProductSummary">
+                        <asp:Repeater ID="ProductRepeater" runat="server" DataSource="<%# Item.Products %>" ItemType="WestWindSystem.ReadModels.ProductSummary">
                             <HeaderTemplate>
                                 <table class="table table-hover table-condensed">
                             </HeaderTemplate>
@@ -28,7 +29,7 @@
                 </ItemTemplate>
             </asp:Repeater>
 
-            <asp:ObjectDataSource ID="SupplierSummaryDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListSuppliers" TypeName="WestWindSystem.BLL.ReadModel"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="SupplierSummaryDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListSuppliers" TypeName="WestWindSystem.BLL.SupplierController"></asp:ObjectDataSource>
         </div>
     </div>
 </asp:Content>

@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WestWindSystem.DAL;
-using WestWindSystem.DataModels;
+using WestWindSystem.ReadModels;
 using WestWindSystem.Entities;
 
 namespace WestWindSystem.BLL
 {
     [DataObject]
-    public class ReadModel
+    public class SupplierController
     {
         #region Query Supplier Summary
         [DataObjectMethod(DataObjectMethodType.Select)]
@@ -23,6 +23,7 @@ namespace WestWindSystem.BLL
                             select new SupplierSummary
                             {
                                 CompanyName = data.CompanyName,
+                                ContactName = data.ContactName,
                                 Phone = data.Phone,
                                 Products = from item in data.Products
                                         select new ProductSummary
