@@ -106,3 +106,23 @@ linq for nested repeater
 list view
 nested repeater
  
+
+METHOD CHAINING
+___________________________
+
+EX: 
+
+public void Delete_Something(int somethingId)
+{
+	using(var context = new ThingContext)
+	{
+		var existing = context.Something.Find(somethingId)
+		context.Somthing.Remove(existing);
+		context.SaveChanges();
+	}
+
+}
+public void Delete_Something(Something item)
+{
+	Delete_Something(item); // saves on maintenance	
+}
