@@ -1,6 +1,6 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>015bb1b6-039b-486e-9f5a-c865bba61021</ID>
+    <ID>ad5c237c-d0e0-4642-bd26-cdd8f1863069</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>WestWind</Database>
@@ -9,17 +9,17 @@
 
 // B) List all the Customers by Company Name. Include the Customer's company name, contact name, and other contact information in the result.
 from person in Customers
-group person by person.CompanyName into CompanyGroup
+orderby person.CompanyName
 select new
 {
-	CompanyName = CompanyGroup.Key,
-	Contact = from contact in CompanyGroup
-	select new
+	CompanyName = person.CompanyName,
+	Contact = new
 	{
-		Name = contact.ContactName,
-		Email = contact.ContactEmail,
-		Phone = contact.Phone,
-		Fax = contact.Fax
+		Name = person.ContactName,
+		Title = person.ContactTitle,
+		Email = person.ContactEmail,
+		Phone = person.Phone,
+		Fax = person.Fax
 	}
-
 }
+

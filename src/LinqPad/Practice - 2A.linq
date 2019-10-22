@@ -1,6 +1,6 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>015bb1b6-039b-486e-9f5a-c865bba61021</ID>
+    <ID>ad5c237c-d0e0-4642-bd26-cdd8f1863069</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>WestWind</Database>
@@ -20,16 +20,12 @@
  * | ...           |                            |
  * 
  */
- from person in Employees
- group person by person.Address.Region into EmployeeGroups
+ from place in Regions
  select new
  {
- 	Region = EmployeeGroups.Key,
-	Employee = from staff in EmployeeGroups
-           select new
-           {
-		       FirstName = staff.FirstName,
-			   LastName = staff.LastName
-           }
- 
+ 	Region = place.RegionDescription,
+	Employees = from area in place.Territories
+	from manager in area.EmployeeTerritories
+	group manager by manager.Employee into areaManagers
+	select areaManagers.Key.FirstName+" "+areaManagers.Key.LastName
  }

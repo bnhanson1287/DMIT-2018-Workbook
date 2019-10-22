@@ -1,6 +1,6 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>015bb1b6-039b-486e-9f5a-c865bba61021</ID>
+    <ID>ad5c237c-d0e0-4642-bd26-cdd8f1863069</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>WestWind</Database>
@@ -16,12 +16,7 @@ select new
 {
 	Country = SupplierGroups.Key,
 	Supplier = from data in SupplierGroups
-	select new
-	{
-	
-		SupplierName = data.CompanyName
-	}
+	select data.CompanyName
 
 
 }
-
