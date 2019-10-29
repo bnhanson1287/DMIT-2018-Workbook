@@ -109,7 +109,7 @@ All product shipments are handled by the **`OrderProcessingController`**. It sup
     - Quantity must be greater than zero and less than or equal to the quantity     outstanding
     - Shipper must exist
     - Freight charge must either be null (no charge) or > $0.00
-    - Processing (tables/data that must be updated/inserted/deleted/whatever)
+  - **Processing** (tables/data that must be updated/inserted/deleted/whatever)
     - Create new Shipment
     - Add all manifest items
     - Check if order is complete; if so, update Order.Shipped
