@@ -1,6 +1,6 @@
 Reverse Engineer a DB
 create folder named Entities
- - add item ADO.NET Data Model
+ - add item ADO.NET Data Model - name _________Context
  - Code first from DB
  - create new connection
 change namespace from .Entities to .DAL
@@ -152,3 +152,9 @@ STEPS FOR TURNING OFF HTTPS IN WEB APP WITH AUTHENTICATION
 1) WebApp -> Properties -> take s off https 
 2) WebApp single click -> properties window, bottom right, SSL Enabled == false
 3) WebApp right click -> manage NuGet Packages -> Update all except bootstrap ones.
+
+SET UP PASSWORD DB
+
+Web.Config -> <connectionStrings>                                [          .         ]                  [           get rid of                         ]		 [       put in dbName       ]
+    <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-WebApp-20191031103811.mdf;Initial Catalog=aspnet-WebApp-20191031103811;Integrated Security=True" providerName="System.Data.SqlClient" />
+  </connectionStrings>
