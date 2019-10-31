@@ -126,3 +126,29 @@ public void Delete_Something(Something item)
 {
 	Delete_Something(item); // saves on maintenance	
 }
+
+_______________________________________________________________________________________
+AUTHENTICATION - Are you are who you say you are.
+
+AUTHORIZATION -What are you allowed to do/see? -> will always be application specific.
+
+USERS & ROLES = USER ROLES
+_____________
+
+Authentication Options 
+
+- Windows Authentication: Windows knows who you are, use that. Active directory structure. Typically used for intranet applications (network within organization).
+- Forms Authentication: Works ok with web apps. Form w/ username: password:
+- OAuth: Open Authentication = 3rd party Authentication. Basically a set of protocols where you have 3rd party authentication IE: login w/ fb, google
+	 JWT - JSON Web Token.
+
+You want security in depth... looking at security from a lot of different angles.
+
+
+
+
+STEPS FOR TURNING OFF HTTPS IN WEB APP WITH AUTHENTICATION
+
+1) WebApp -> Properties -> take s off https 
+2) WebApp single click -> properties window, bottom right, SSL Enabled == false
+3) WebApp right click -> manage NuGet Packages -> Update all except bootstrap ones.
