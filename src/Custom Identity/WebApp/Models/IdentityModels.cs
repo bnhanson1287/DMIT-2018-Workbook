@@ -38,7 +38,7 @@ namespace WebApp.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Demodb", throwIfV1Schema: false)
         {
             //Set our database initialization strategy
             Database.SetInitializer(new SecurityDbContextInitializer());
