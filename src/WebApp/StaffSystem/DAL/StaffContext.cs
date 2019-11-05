@@ -13,7 +13,7 @@ namespace StaffSystem.DAL
         {
         }
 
-        public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<Staff> Staff { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

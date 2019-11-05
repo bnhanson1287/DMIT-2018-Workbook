@@ -17,7 +17,7 @@ namespace StaffSystem.BLL
         {
             using(var context = new StaffContext())
             {
-                return context.Staffs.ToList();
+                return context.Staff.ToList();
             }
         }
     }
