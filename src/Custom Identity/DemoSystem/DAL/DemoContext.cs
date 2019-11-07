@@ -6,7 +6,8 @@ namespace DemoSystem.DAL
     using System.Linq;
     using DemoSystem.Entities;
 
-    public partial class DemoContext : DbContext
+    // change context class to interal in LAB
+    internal partial class DemoContext : DbContext
     {
         public DemoContext()
             : base("name=Demodb")
