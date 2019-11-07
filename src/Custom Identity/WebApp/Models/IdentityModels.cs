@@ -18,7 +18,7 @@ namespace WebApp.Models
         #region
         //All of these will be added as extra added as extra columns on the aspnetuser db table
 
-        public int? PersonID { get; set; }
+        public int? PersonId { get; set; }
         public string FavoriteColor { get; set; }
         #endregion
         public ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)
