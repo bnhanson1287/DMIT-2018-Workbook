@@ -31,9 +31,6 @@ void OrderProcessingController.ShipOrder(int orderId, ShippingDirections shippin
 ## POCOs/DTOs
 The POCOs/DTOs are simply classes that will hold our data when we are performing Queries or issuing Commands to the BLL.
 
-```C#
-
-```
 ### Commands
 ```C#
 public class ShippingDirections
