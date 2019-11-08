@@ -79,16 +79,6 @@ public class OrderProductInformation
     // NOTE: Outstanding <= OrderDetails.Quantity - Sum(ManifestItems.ShipQuantity) for that product/order
 }
 ```
-```C#
-public class OrderItem
-{
-    public int ProductID {get;set;}
-    public string ProductName {get;set;}
-    public short Qty {get;set;}
-    public short QtyPerUnit {get;set;}
-    public short Outstanding {get;set;} //Calculated as OD.Quantity - Sum(Shipped qty)
-}
-```
 ## BLL Processing
 All product shipments are handled by the **`OrderProcessingController`**. It supports the following methods.
 
