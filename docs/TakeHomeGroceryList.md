@@ -18,12 +18,11 @@ Clerk will be able to see the product information on a certain order. They will 
     - If the cancel button is selected, the editable fields will be reverted to blank.
     - Gather the information from the form of the picked items. The "PickOrder" in the BLL will handle the processing:
     ```csharp
-    void OrderPickingController.PickOrder(int orderID, PickerSelection picker, List<PickedItems> items)
+    void OrderPickingController.PickOrder(int orderID, OrderPicker picker, List<PickedItems> items)
     ```
 
 
 ## POCOs/DTOs
-The POCOs/DTOs are simply classes that will hold our data when we are performing Queries or issuing Commands to the BLL.
 
 ### Commands
 ```csharp
@@ -32,6 +31,12 @@ public class PickedItems
     public int ProductID {get;set;}
     public short QtyPicked{get;set;}
     public string PickIssue{get;set;}
+    
+}
+public class OrderPicker
+{
+    public int PickerID {get;set;}
+    public DateTime? PickedDate {get;set;}
 }
 ```
 ### Queries
@@ -53,7 +58,7 @@ public class PickerSelection
 ```csharp
 public class OrderCustomer
 {
-    //public int CustomerID {get;set;}
+    public int CustomerID {get;set;}
     public string CustomerName 
     {
         get
@@ -78,7 +83,7 @@ public class OrderProducts
 ```csharp
 public class OrderListItems
 {
-    //public int OrderListID {get;set;}
+    public int OrderListID {get;set;}
     public int OrderID {get;set;}
     public IEnumerable<OrderProducts> OrderItems {get;set;}
     public short OrderedQty {get;set;}
@@ -87,4 +92,22 @@ public class OrderListItems
     public string PickIssue {get;set;}
 }
 ```
-
+## BLL Processing
+All order picking will be handled by the OrderPickingController.
+- **`List<PickerSelection>OrderPickingController.ListPickers()`**
+    - Get all the pickers from the DB.
+- **`OrderPickingController.FindCustomer(OrderID)`**
+    - Will return the `OrderCustomer` information based on the customerId attributed to the OrderId.
+    - Will ensure OrderId exists || throw exception
+- **`List<OrderListItems>OrderPickingController.LoadOrder(OrderID)`** 
+    - Will list all of the `OrderListItems` based on the OrderID. 
+    - Will ensure OrderId exists || throw exception
+- 
+- **`void OrderPickingController.PickOrder(int orderID, OrderPicker picker, List<PickedItems> items)`**
+    - ### Validation
+        - OrderID must be valid
+        - PickedQty cannot be greater than OrderedQty.
+        - Picker must be selected ** is a nullable field, however, the whole basis for this page is that the items have been picked.
+    - ### Processing
+        - OrderList updated to reflect the QtyPicked and Pick Issue if applicable.
+        - Update PickerId and PickedDate in Orders to reflect changes.
