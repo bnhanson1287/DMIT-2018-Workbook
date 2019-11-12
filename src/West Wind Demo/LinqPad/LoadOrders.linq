@@ -25,8 +25,26 @@ List<OutstandingOrder> LoadOrders(int supplierID)
 			ShipToName = sale.ShipName,
 			OrderDate = sale.OrderDate.Value,
 			RequiredBy = sale.RequiredDate.Value,
-			//TODO: Outstanding Items
-			// FullShippingAddress
+			OutstandingItems = from items in sale.OrderDetails
+			where items.Product.SupplierID == supplierID
+			select new OrderItem
+			{
+				ProductId = items.ProductID,
+				ProductName = items.Product.ProductName,
+				Qty = items.Quantity,
+				QtyPerUnit = items.Product.QuantityPerUnit
+				//TODO: Figure out outstanding quantity
+//				Outstanding = (from ship in items.Order.Shipments
+//							  from shipItem in ship.ManifestItems
+//							  where shipItem.ProductID == items.ProductID
+//							  select shipItem.ShipQuantity).Sum()
+			},
+			FullShippingAddress = //TODO: sale.ShipAddressID
+								 sale.Customer.Address.Address+ Environment.NewLine +
+								 sale.Customer.Address.City+ ", " +
+								 sale.Customer.Address.Region+ Environment.NewLine +
+								 sale.Customer.Address.Country+ " " +
+								 sale.Customer.Address.PostalCode+ Environment.NewLine,
 			Comments = sale.Comments
 		};
 		return result.ToList();
