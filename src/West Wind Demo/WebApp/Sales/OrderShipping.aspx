@@ -29,13 +29,29 @@
                     <tr>
                         <td colspan="4">
                             <asp:Label ID="OrderComments" runat="server" text="<%# Item.Comments %>"/>
-                            <asp:DropDownList ID="ShipperDropDown" runat="server">
-
+                            <asp:DropDownList ID="ShipperDropDown" runat="server" CssClass="form-control" DataSourceID="ShippersDataSource" DataTextField="Shipper" DataValueField="ShipperId" AppendDataBoundItems="true">
+                                <asp:ListItem Value=" ">Select a Shipper</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:GridView ID="ProductsGridView" runat="server" DataSource="<%#Item.OutstandingItems%>" ItemType="WestWindSystem.DataModels.OrderItem">
-
+                            <asp:GridView ID="ProductsGridView" runat="server" DataSource="<%#Item.OutstandingItems%>" ItemType="WestWindSystem.DataModels.OrderItem" CssClass="table table-hover
+                                table-condensed" AutoGenerateColumns="false" DataKeyNames="ProductID">
+                                <Columns>
+                                    <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
+                                    <asp:BoundField DataField="Qty" HeaderText="Qty" />
+                                    <asp:BoundField DataField="QtyPerUnit" HeaderText="Qty per Unit" />
+                                    <asp:BoundField DataField="Outstanding" HeaderText="Outstanding" />
+                                    <asp:TemplateField HeaderText="Ship Quantity">
+                                        <ItemTemplate>
+                                            <asp:TextBox ID="ShipQuantity" runat="server"></asp:TextBox>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
                             </asp:GridView>
                             <asp:Label ID="ShippingAddress" runat="server" text=<%# Item.FullShippingAddress %>/>
+                            <asp:TextBox ID="TrackingCode" runat="server" />
+                            <asp:TextBox ID="FreightCharge" runat="server" />
+                            <asp:LinkButton ID="ShipOrder" runat="server" CommandName="Ship">  
+                                Ship Order
+                            </asp:LinkButton>
                         </td>
                     </tr>
                 </EditItemTemplate>
@@ -86,6 +102,7 @@
                     </table>
                 </LayoutTemplate>
             </asp:ListView>
+            <asp:ObjectDataSource ID="ShippersDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ShipperList" TypeName="WestWindSystem.BLL.OrderProcessingController"></asp:ObjectDataSource>
             <asp:ObjectDataSource runat="server" ID="SuppliersOrdersDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="LoadOrders" TypeName="WestWindSystem.BLL.OrderProcessingController">
                 <SelectParameters>
                     <asp:Parameter Name="supplierID" Type="Int32" DefaultValue="8"></asp:Parameter>

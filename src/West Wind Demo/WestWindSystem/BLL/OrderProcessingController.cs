@@ -71,6 +71,7 @@ namespace WestWindSystem.BLL
              }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public List<ShipperSelection> ShipperList()
         {
             using(var context = new WestWindContext())
