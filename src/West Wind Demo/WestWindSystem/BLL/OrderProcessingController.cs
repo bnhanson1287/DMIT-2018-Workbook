@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,15 @@ using WestWindSystem.DataModels;
 
 namespace WestWindSystem.BLL
 {
+    [DataObject]
     public class OrderProcessingController
     {
+
         #region Queries
-        List<OutstandingOrder> LoadOrders(int supplierID)
+
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<OutstandingOrder> LoadOrders(int supplierID)
         {
             // TODO: Implement this method with the following
             /*
@@ -61,7 +67,7 @@ namespace WestWindSystem.BLL
                         sale.Customer.Address.PostalCode + Environment.NewLine,
                         Comments = sale.Comments
                     };
-                                return result.ToList();
+                    return result.ToList();
              }
         }
 
