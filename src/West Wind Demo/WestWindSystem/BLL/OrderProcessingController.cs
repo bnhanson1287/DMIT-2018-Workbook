@@ -13,7 +13,6 @@ namespace WestWindSystem.BLL
         #region Queries
         List<OutstandingOrder> LoadOrders(int supplierID)
         {
-            throw new NotImplementedException();
             // TODO: Implement this method with the following
             /*
              * Validation:
@@ -21,6 +20,49 @@ namespace WestWindSystem.BLL
                 Query for outstanding orders, getting data from the following tables:
                 TODO: List table names
              */
+             using(var context = new WestWindContext())//using my DAL object
+             {
+                //Validation
+                var supplier = context.Suppliers.Find(supplierID);
+                if(supplier == null)
+                {
+                    throw new Exception("Invalid supplier - unable to load orders.");
+                }
+                //Processing
+                var result =
+                from sale in context.Orders
+                    where !sale.Shipped
+                        && sale.OrderDate.HasValue
+                    select new OutstandingOrder
+                    {
+                        OrderId = sale.OrderID,
+                        ShipToName = sale.ShipName,
+                        OrderDate = sale.OrderDate.Value,
+                        RequiredBy = sale.RequiredDate.Value,
+                        OutstandingItems = from items in sale.OrderDetails
+                                           where items.Product.SupplierID == supplierID
+                                           select new OrderItem
+                                           {
+                                               ProductId = items.ProductID,
+                                               ProductName = items.Product.ProductName,
+                                               Qty = items.Quantity,
+                                               QtyPerUnit = items.Product.QuantityPerUnit
+                                               //TODO: Figure out outstanding quantity
+                                               //				Outstanding = (from ship in items.Order.Shipments
+                                               //							  from shipItem in ship.ManifestItems
+                                               //							  where shipItem.ProductID == items.ProductID
+                                               //							  select shipItem.ShipQuantity).Sum()
+                                           },
+                        FullShippingAddress = //TODO: sale.ShipAddressID
+                        sale.Customer.Address.Street + Environment.NewLine +
+                        sale.Customer.Address.City + ", " +
+                        sale.Customer.Address.Region + Environment.NewLine +
+                        sale.Customer.Address.Country + " " +
+                        sale.Customer.Address.PostalCode + Environment.NewLine,
+                        Comments = sale.Comments
+                    };
+                                return result.ToList();
+             }
         }
 
         public List<ShipperSelection> ShipperList()

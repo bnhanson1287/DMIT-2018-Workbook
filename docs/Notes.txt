@@ -158,3 +158,5 @@ SET UP PASSWORD DB
 Web.Config -> <connectionStrings>                                [          .         ]                  [           get rid of                         ]		 [       put in dbName       ]
     <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-WebApp-20191031103811.mdf;Initial Catalog=aspnet-WebApp-20191031103811;Integrated Security=True" providerName="System.Data.SqlClient" />
   </connectionStrings>
+
+Need to rename some Member names. Ex) Can't have public string Address in class of Address, could rename to street or whatever.
