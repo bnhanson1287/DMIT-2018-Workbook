@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrderShipping.aspx.cs" Inherits="WebApp.Sales.OrderShipping" %>
+
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1 class="page-header">Order Shipping</h1>
 
@@ -7,6 +10,7 @@
             <p>
                 <asp:Literal runat="server" ID="SupplierInfo"/>
             </p>
+            <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
             <asp:ListView ID="CurrentOrders" runat="server" DataSourceID="SuppliersOrdersDataSource" ItemType="WestWindSystem.DataModels.OutstandingOrder" OnItemCommand="CurrentOrders_ItemCommand">
                 <EditItemTemplate>
                     <tr style="">
