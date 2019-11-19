@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebApp.Admin.Security;
+using WestWindSystem.DataModels;
 
 namespace WebApp.Sales
 {
@@ -21,6 +22,44 @@ namespace WebApp.Sales
                 //Load up the info on the supplier.
                 //TODO: Replace hard-coded supplierID with the user's supplier ID
                 SupplierInfo.Text = "Temp supplier: ID 8";
+            }
+        }
+
+        protected void CurrentOrders_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Ship")
+            {
+                // Gather information from the form to send to the BLL for shipping.
+                // - ShipOrder(int ordeID, ShippingDirections shipping, List<ShippedItem> items)
+                int orderId = 0;
+                Label ordIDLabel = e.Item.FindControl("OrderIdLabel") as Label; // safe cast the Control object as a label object
+                if (ordIDLabel != null)
+                {
+                    orderId = int.Parse(ordIDLabel.Text);
+                }
+                ShippingDirections shipInfo = new ShippingDirections();
+                DropDownList shipViaDropDown = e.Item.FindControl("ShipperDropDown") as DropDownList;
+
+                if(shipViaDropDown != null)// if i got the control... not validation
+                {
+                    shipInfo.ShipperId = int.Parse(shipViaDropDown.SelectedValue);
+                }
+
+                // tracking code
+                TextBox trackingCodeTextBox = e.Item.FindControl("TrackingCode") as TextBox;
+
+                if(trackingCodeTextBox != null)
+                {
+                    shipInfo.TrackingCode = trackingCodeTextBox.Text;
+                }
+                // freight charge
+                decimal price;
+                TextBox freightChargeTextBox = e.Item.FindControl("FreightCharge") as TextBox;
+                if(freightChargeTextBox != null && decimal.TryParse(freightChargeTextBox.Text, out price))
+                {
+                    shipInfo.FreightCharge = price;
+                }
+                
             }
         }
     }
