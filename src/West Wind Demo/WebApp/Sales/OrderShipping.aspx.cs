@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebApp.Admin.Security;
+using WestWindSystem.BLL;
 using WestWindSystem.DataModels;
 
 namespace WebApp.Sales
@@ -59,8 +60,34 @@ namespace WebApp.Sales
                 {
                     shipInfo.FreightCharge = price;
                 }
-                
+
+                List<ShippedItem> goods = new List<ShippedItem>();
+                GridView gv = e.Item.FindControl("ProductGridView") as GridView;
+                if (gv != null)
+                {
+                    foreach (GridViewRow row in gv.Rows)
+                    {
+                        // get product id and ship qty
+                        short quantity;
+                        HiddenField prodId = row.FindControl("ProductId") as HiddenField;
+                        TextBox qty = row.FindControl("ShipQuantity") as TextBox;
+
+                        if (prodId != null && qty != null && short.TryParse(qty.Text, out quantity))
+                        {
+                            ShippedItem item = new ShippedItem
+                            {
+                                Product = prodId.Value,
+                                Quantity = quantity
+                            };
+                            goods.Add(item);
+                        }
+                    }
+                }
+
+                var controller = new OrderProcessingController();
+                controller.ShipOrder(orderId, shipInfo, goods);
             }
+            
         }
     }
 }
